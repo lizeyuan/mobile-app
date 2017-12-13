@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            padding: 50px;
+            background-color: pink;
+            overflow:auto;
+        }
+        .in{
+            width: 100px;
+            height: 230px;
+            background-color: lightgreen;
+
+        }
+        button {
+            overflow:visible;
+            /*IE7浏览器清除按钮两侧的空格不一致问题：文字越多，空格越大
+              元素的内容在元素框之外也可见
+            */
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="in"></div>
+
+</div>
+<button>按钮</button>
+<button>长按钮</button>
+<button>较长按钮</button>
+<button>很长很长的按钮</button>
+<textarea name="" id="" cols="30" rows="10"></textarea>
+</body>
+</html>
