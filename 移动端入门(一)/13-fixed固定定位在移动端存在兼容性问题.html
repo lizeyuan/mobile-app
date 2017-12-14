@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         <!--固定定位在移动端存在兼容性问题,简单的实现头部底部固定-->
+         html  {
+
+             height:100%;
+         }
+
+         body {
+             margin:0;
+             height:100%;
+             overflow: hidden;
+
+         }
+         body::-webkit-scrollbar {
+             display: none ;
+         }
+         header,footer {
+             height:4rem;
+             width:100%;
+             position:absolute;
+             background: pink;
+         }
+         header {
+             width:200%;
+             /*
+               body的overflow:hidden在移动端不生效，仍然可能造成滚动条
+
+               */
+         }
+         #main {
+             overflow: auto;
+             position: absolute;
+             top:4rem;
+             bottom: 4rem;
+             width:100%
+         }
+
+         footer {
+             bottom: 0;
+         }
+         header {
+             top:0;
+         }
+
+    </style>
+</head>
+<body>
+    <header>固定头部4rem</header>
+
+
+    <div id="main">
+        <div class="mycontent">
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+            中间自适应部分<br>
+        </div>
+    </div>
+    <footer>固定尾部4rem</footer>
+
+
+<!--存在的问题：拉回，反弹。position:fixed还存在兼容性-->
+</body>
+</html>
