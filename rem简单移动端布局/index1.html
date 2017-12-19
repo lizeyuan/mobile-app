@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="user-scalable=no,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         body {
+             margin:0;
+         }
+         div {
+             width:1.875rem;
+             height:4rem;
+             border:solid 1px #ccc;
+             float:left;
+             box-sizing: border-box;
+         }
+    </style>
+    <script>
+        (function(){
+            //选取一个宽度，作为整个屏幕的宽度 16rem
+            var html = document.documentElement;
+            var targetF = html.getBoundingClientRect().width / 16;
+            document.documentElement.style.fontSize = targetF + "px";
+         })();
+    </script>
+</head>
+<body>
+    <div>ddddd</div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

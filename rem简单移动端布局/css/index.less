@@ -1,0 +1,195 @@
+/*
+   Write By LiZY
+   Date: 2017/12/16
+   清除移动端默认样式
+*/
+html,body {
+  width:100%;
+  height:100%;
+}
+html {
+  overflow: hidden;
+}
+
+body {
+  margin:0;
+  -webkit-text-size-adjust: 100%;
+  -webkit-user-select: none;
+  font-family: Helvetica;
+}
+a {
+  text-decoration: none;
+}
+button,input {
+  border-radius:0;
+  -webkit-appearance: none;
+}
+
+a,button,input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1 {
+  margin:0;
+}
+
+ul {
+   margin:0;
+   padding:0;
+   list-style: none;
+
+}
+
+img {
+   vertical-align: top;
+}
+
+@r:50rem;
+
+#header {
+  position: absolute;
+  left:0;
+  width:100%;
+  top:0;
+  height:103/@r;
+  background-color: #ef3239;
+  box-sizing: border-box;
+  border-bottom: 1px #000 solid;
+  h1 {
+     text-align:center;
+     font-size: 36/@r;
+     line-height: 88/@r;
+     i {
+        font-size:26/@r;
+        margin-right:16/@r;
+     }
+  }
+  a {
+    width:128/@r;
+    height:88/@r;
+    position:absolute;
+    top:0;
+    text-align: center;
+    line-height: 88/@r;
+  }
+  #task {
+    left:0;
+    i {
+      font-size: 37/@r;
+    }
+  }
+  #refresh{
+    right:0;
+    i {
+      font-size:36/@r;
+    }
+  }
+
+  i {
+     color:#fff;
+  }
+}
+
+.active {
+   color:#f23838 !important;
+}
+#wrap {
+    width:37/@r;
+    display: inline-block;
+    vertical-align: middle;
+    i {
+       float:left;
+    }
+}
+#nav {
+    position: absolute;
+    top:103/@r;
+    width:100%;
+    height:105/@r;
+    background-color: #fdfdfd;
+    border-top:1px solid #b0b0b0;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    .active {
+      i {
+        font-size:36/@r;
+      }
+    }
+    a {
+
+       float:left;
+       width:25%;
+       height:103/@r;
+       text-align:center;
+       line-height:103/@r;
+       color:#848689;
+       font-size: 35/@r;
+        #wrap {
+          .glyphicon-chevron-down {
+            top:-4/@r !important;
+          }
+          .glyphicon-chevron-up {
+            top:4/@r !important;
+          }
+          font-size: 28/@r;
+        }
+        .glyphicon-filter {
+            font-size:37/@r;
+            top:5/@r;
+        }
+    }
+}
+section {
+   position: absolute;
+   top:208/@r;
+   left:0;
+   right:0;
+   bottom: 0;
+   overflow: auto;
+}
+
+#list {
+    li {
+       height:281/@r;
+       border-bottom: 1px solid #e0e0e0;
+       box-sizing: border-box;
+    }
+    a {
+       padding:23/@r 23/@r 22/@r;
+       height:235/@r;
+       float:left;
+    }
+    img {
+        width:235/@r;
+        height:235/@r;
+    }
+    .span-wrap {
+        float:right;
+         width:432/@r;
+         .title {
+            line-height: 44/@r;
+            font-size:28/@r;
+            color:#333;
+            margin-top:5/@r;
+            display: block;
+         }
+         .comment {
+             font-size: 28/@r;
+             line-height: 47/@r;
+             display: block;
+
+         }
+          .price {
+             line-height: 64/@r;
+             font-size: 38/@r;
+            margin-top: 31/@r;
+          }
+
+    }
+}
+//此布局存在拉取反弹的问题
+
+
+
+
+

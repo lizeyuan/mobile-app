@@ -1,0 +1,174 @@
+/*
+   Write By LiZY
+   Date: 2017/12/16
+   清除移动端默认样式
+*/
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+html {
+  overflow: hidden;
+}
+body {
+  margin: 0;
+  -webkit-text-size-adjust: 100%;
+  -webkit-user-select: none;
+  font-family: Helvetica;
+}
+a {
+  text-decoration: none;
+}
+button,
+input {
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+a,
+button,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+h1 {
+  margin: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+#header {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 0;
+  height: 2.06rem;
+  background-color: #ef3239;
+  box-sizing: border-box;
+  border-bottom: 1px #000 solid;
+}
+#header h1 {
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.76rem;
+}
+#header h1 i {
+  font-size: 0.52rem;
+  margin-right: 0.32rem;
+}
+#header a {
+  width: 2.56rem;
+  height: 1.76rem;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  line-height: 1.76rem;
+}
+#header #task {
+  left: 0;
+}
+#header #task i {
+  font-size: 0.74rem;
+}
+#header #refresh {
+  right: 0;
+}
+#header #refresh i {
+  font-size: 0.72rem;
+}
+#header i {
+  color: #fff;
+}
+.active {
+  color: #f23838 !important;
+}
+#wrap {
+  width: 0.74rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+#wrap i {
+  float: left;
+}
+#nav {
+  position: absolute;
+  top: 2.06rem;
+  width: 100%;
+  height: 2.1rem;
+  background-color: #fdfdfd;
+  border-top: 1px solid #b0b0b0;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+}
+#nav .active i {
+  font-size: 0.72rem;
+}
+#nav a {
+  float: left;
+  width: 25%;
+  height: 2.06rem;
+  text-align: center;
+  line-height: 2.06rem;
+  color: #848689;
+  font-size: 0.7rem;
+}
+#nav a #wrap {
+  font-size: 0.56rem;
+}
+#nav a #wrap .glyphicon-chevron-down {
+  top: -0.08rem !important;
+}
+#nav a #wrap .glyphicon-chevron-up {
+  top: 0.08rem !important;
+}
+#nav a .glyphicon-filter {
+  font-size: 0.74rem;
+  top: 0.1rem;
+}
+section {
+  position: absolute;
+  top: 4.16rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}
+#list li {
+  height: 5.62rem;
+  border-bottom: 1px solid #e0e0e0;
+  box-sizing: border-box;
+}
+#list a {
+  padding: 0.46rem 0.46rem 0.44rem;
+  height: 4.7rem;
+  float: left;
+}
+#list img {
+  width: 4.7rem;
+  height: 4.7rem;
+}
+#list .span-wrap {
+  float: right;
+  width: 8.64rem;
+}
+#list .span-wrap .title {
+  line-height: 0.88rem;
+  font-size: 0.56rem;
+  color: #333;
+  margin-top: 0.1rem;
+  display: block;
+}
+#list .span-wrap .comment {
+  font-size: 0.56rem;
+  line-height: 0.94rem;
+  display: block;
+}
+#list .span-wrap .price {
+  line-height: 1.28rem;
+  font-size: 0.76rem;
+  margin-top: 0.62rem;
+}
