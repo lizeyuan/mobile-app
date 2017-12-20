@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         body {
+             margin:0;
+         }
+         #box {
+             height:200px;
+             border:solid 1px #ccc;
+             /* 1. 新版弹性盒模型(定义弹性盒子)*/
+             /*display: flex;*/
+             /* 2. 设置主轴方向(row | column)*/
+             /*flex-direction: row;*/
+             /* 3. 设置主轴上元素排列方向 (row-reverse | column-reverse)*/
+             /*flex-direction: row-reverse;*/
+             /* 4. 主轴富裕空间管理 flex-start|flex-end|center
+              | space-around(富裕空间平均分配在每个元素两侧) | space-between(富裕空间平均分配在每两个元素之间) */
+             /* 5. 侧轴方向富裕空间管理(flex-start | flex-end
+             | center | baseline(根据侧轴方向上文字的基线对齐))*/
+              /*align-items: baseline;*/
+             /*justify-content: space-between;*/
+             /* 1. 老版弹性盒模型(定义弹性盒子)*/
+             display:-webkit-box;
+             /*2 . 设置主轴方向(horizontal | vertical)*/
+             /*-webkit-box-orient:horizontal;*/
+             /*3. 设置主轴上元素排列次序 normal | reverse */
+             /*-webkit-box-direction: reverse;*/
+             /* 4. 主轴方向富裕空间管理 (start | end | center
+             | justify(富裕空间平均分配在元素两侧) | 缺失（富裕空间平均分配在元素中间）)*/
+             /*-webkit-box-pack: justify;*/
+             /* 5. 侧轴方向富裕空间管理 (start | end |center)*/
+             /*-webkit-box-align: center;*/
+         }
+         #box div {
+             width:40px;
+             height:40px;
+             background-color: red;
+             color:#fff;
+             /* 6. 盒子弹性空间管理(新版)*/
+             /*flex-grow: 1;*/
+             /* 6 盒子弹性空间管理(老版)*/
+             /*-webkit-box-flex: 1;*/
+         }
+
+        #box div:nth-of-type(1) {
+              /* 7. 元素具体位置设置(新版)(可以接收到0，负值，数值越小越靠前，小数不生效)*/
+              /*order:5;*/
+              /* 7. 元素具体位置限制(老版),数值越小越靠前，最小值默认处理为1（0的话处理为1）*/
+              -webkit-box-ordinal-group: 1;
+         }
+         #box div:nth-of-type(2) {
+              /*order:5;*/
+             -webkit-box-ordinal-group: 2;
+         }
+         #box div:nth-of-type(3) {
+              /*order:3;*/
+             -webkit-box-ordinal-group: 3;
+         }
+         #box div:nth-of-type(4) {
+              /*order:0;*/
+             -webkit-box-ordinal-group: 4;
+         }
+
+
+    </style>
+</head>
+<body>
+     <div id="box">
+         <div>1</div>
+         <div>2</div>
+         <div>3</div>
+         <div>4</div>
+     </div>
+</body>
+
+</html>
