@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         #box {
+              width:100px;
+              height:100px;
+              border: solid 1px #ccc;
+         }
+         /*
+            @media (orientation:landscape)
+            @media (orientation:portrait)
+               原理： 根据可视区的宽度和高度进行判断的
+          */
+         /*@media (orientation:landscape) {*/
+             /*#box {*/
+                 /*background:red;*/
+             /*}*/
+         /*}*/
+
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+</body>
+<script>
+     var updateOrientationChange = function(){
+           var orientation = window.orientation;
+         switch(orientation){
+             case 90:
+                  orientation = 'landscape';
+                  break;
+             default:
+                   orientation = 'portrait';
+         }
+
+        alert(orientation);
+     }
+     window.addEventListener('orientationchange',updateOrientationChange,false);
+
+</script>
+</html>
