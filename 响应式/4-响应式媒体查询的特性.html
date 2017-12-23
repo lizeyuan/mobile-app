@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         #box {
+              height:100px;
+              background-color: pink;
+         }
+
+         #box:before {
+              content:"很宽阔，可以自由自在的滚来滚去~~~~~~~,很宽阔，可以自由自在的滚来滚去~~~~~~~"
+         }
+
+         @media all and (max-width:750px) {
+              #box {
+                   background-color: blue;
+              }
+              #box:before {
+                  content:"不宽敞了，不能自由自在的滚来滚去了-------------"
+              }
+         }
+
+         @media all and (max-width:500px){
+              #box {
+                  background-color: green;
+              }
+              #box:before {
+                  content:"不能再小了，很拥挤啊"
+              }
+         }
+
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
