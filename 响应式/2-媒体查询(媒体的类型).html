@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         #box {
+              width:100px;
+              height:100px;
+              background: red;
+         }
+         /*
+            all : 所有媒体
+            braille: 盲文触觉设备
+            embossed: 盲文打印机
+            print: 手持设置
+            projection: 打印预览
+            screen: 彩屏设备
+            tty: 不适用像素的设备
+            tv: 电视
+          */
+         @media print {
+              /*手持设备黄色*/
+              #box {
+                  background:yellow;
+              }
+         }
+
+         @media all {
+             /*所有媒体*/
+             #box {
+                  background: blue;
+             }
+         }
+
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
