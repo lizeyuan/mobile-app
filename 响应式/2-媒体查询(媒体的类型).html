@@ -29,11 +29,24 @@
               }
          }
 
-         @media all {
+         /*@media all {*/
              /*所有媒体*/
-             #box {
-                  background: blue;
-             }
+             /*#box {*/
+                  /*background: blue;*/
+             /*}*/
+         /*}*/
+
+         /* 关键字：
+                only: 只有在某种特定的设备上起作用
+                      @media only 设备类型
+                and:  连接媒体类型和媒体特性的
+           */
+
+         @media only screen and (min-width:500px) {
+              /*当媒体宽度大于等于500px的时候识别*/
+              #box {
+                  background: green;
+              }
          }
 
     </style>
