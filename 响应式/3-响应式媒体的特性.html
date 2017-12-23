@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+         #box {
+             width:100px;height:100px;
+             background: red;
+         }
+         /*
+          *  媒体特性：
+          *         min-width: 当屏幕宽度大于等于某个值的时候生效
+          *         max-width: 当屏幕宽度小于等于某个值的时候生效
+         */
+         /*@media only screen and (min-width:500px) {*/
+              /*#box {*/
+                  /*background: blue;*/
+              /*}*/
+         /*}*/
+          @media all and (max-width:500px) {
+               #box {
+                    background-color: green;
+               }
+          }
+     </style>
+</head>
+<body  style="overflow: auto">
+    <div id="box">
+
+    </div>
+</body>
+</html>
