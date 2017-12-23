@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         /**
+          *  当屏幕的宽度大于等于1000的时候，一行6个
+          *  当屏幕的宽度大于等于800的时候，一行 3个
+          *  当屏幕的宽度大于等于600的时候，一行2个
+          *  当屏幕的宽度大于等于400的时候，一行1个
+          */
+          body {
+              margin:0;
+          }
+          div {
+               height:100px;
+               border:solid 1px #ccc;
+               box-sizing: border-box;
+               float:left;
+               width:100%
+          }
+         /* @media not 排除掉某种特殊的媒体类型 */
+         @media not tv {
+              div {
+                  background-color: red;
+              }
+         }
+         @media all and (min-width:400px) {
+             div {
+                 width:100%;
+             }
+         }
+
+
+         @media all and (min-width:600px) {
+             div {
+                 width:50%;
+             }
+         }
+
+         @media all and (min-width:800px) {
+             div {
+                 width:33.333%;
+             }
+         }
+
+
+          @media all and (min-width:1000px) {
+              div {
+                  width:16.667%;
+              }
+          }
+
+
+
+
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>
