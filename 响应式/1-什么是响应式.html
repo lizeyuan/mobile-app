@@ -8,10 +8,29 @@
     <title>Document</title>
     <style>
         /*一个网站兼容于不同的终端，并且在不同的终端都有较好的显示效果*/
+        div {
+             height:100px;
+             width:16.6667%;
+             border:solid 1px #ccc;
+             box-sizing: border-box;
+             background: red;
+             float:left;
+        }
     </style>
 </head>
 <body>
-
+<!--
+    当屏幕很大的时候，一行显示6个
+    当屏幕宽带中等的时候，一行显示3个
+    当屏幕宽带较小的时候，一行显示2个
+    当屏幕宽度很小的时候，一行显示1个
+-->
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
 </body>
 
 </html>
