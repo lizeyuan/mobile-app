@@ -21,13 +21,24 @@
     /*
     *  移动端事件：
     *        手指按下: ontouchstart
-    *        手指移动: ontouchmomv
+    *        手指移动: ontouchmove
     *        手指抬起: ontouchend
     *    浏览器的模拟器不支持事件绑定的第一种形式，可以通过addEventListener
     * */
     var oBox = document.getElementById("box");
-    oBox.ontouchstart = function(){
-         alert("1");
-    }
+    oBox.addEventListener('touchstart',function(){
+         console.log('按下');
+    });
+    oBox.addEventListener('touchmove',function(){
+        console.log('移动');
+    });
+
+    oBox.addEventListener('touchend',function(){
+        console.log('抬起');
+    });
+
+    oBox.addEventListener('mouseup',function(){
+        console.log('鼠标抬起');
+    });
 </script>
 </html>
