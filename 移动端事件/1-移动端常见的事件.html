@@ -25,9 +25,11 @@
     *        手指抬起: ontouchend
     *    浏览器的模拟器不支持事件绑定的第一种形式，可以通过addEventListener
     * */
+    var t1,t2;
     var oBox = document.getElementById("box");
     oBox.addEventListener('touchstart',function(){
          console.log('按下');
+          t1 = new Date();
     });
     oBox.addEventListener('touchmove',function(){
         console.log('移动');
@@ -35,10 +37,13 @@
 
     oBox.addEventListener('touchend',function(){
         console.log('抬起');
+
     });
 
     oBox.addEventListener('mouseup',function(){
         console.log('鼠标抬起');
+        t2 = new Date();
+        alert(t2-t1);
     });
 </script>
 </html>
