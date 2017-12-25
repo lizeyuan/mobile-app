@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         #box {
+             width:100px;
+             height:100px;
+             background-color: red;
+             position: absolute;
+             top:0;
+             left:0;
+             opacity: 0.5;
+         }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <a href="http://www.baidu.com">点击链接</a>
+</body>
+<script>
+    /*
+    *   定义： 当上层元素点击的时候，下层元素也能获得点击(焦点)，移动端的点透
+    * */
+    var oDiv = document.getElementById('box');
+    oDiv.addEventListener('touchstart',function(){
+         this.style.display = 'none';
+    });
+</script>
+</html>
