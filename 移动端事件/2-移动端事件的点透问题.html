@@ -25,10 +25,22 @@
 <script>
     /*
     *   定义： 当上层元素点击的时候，下层元素也能获得点击(焦点)，移动端的点透
+    *         上层元素消失(在一定时间内(300ms))
+    *       1. 下层的元素不能获得焦点或者点击
+    *       2. 阻止鼠标的默认事件
+    *       3. 设置延时
     * */
     var oDiv = document.getElementById('box');
-    oDiv.addEventListener('touchstart',function(){
-         this.style.display = 'none';
+    oDiv.addEventListener('touchstart',function(ev){
+        this.style.display = 'none';
+
     });
+
+    //模拟器上可能存在问题，同时阻止了a的链接跳转，可以用js实现跳转
+    document.addEventListener('touchstart',function(ev){
+        ev.preventDefault();
+    });
+
+
 </script>
 </html>
