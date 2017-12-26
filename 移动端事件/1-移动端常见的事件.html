@@ -29,7 +29,7 @@
     var oBox = document.getElementById("box");
     oBox.addEventListener('touchstart',function(){
          console.log('按下');
-          t1 = new Date();
+        t1 = new Date();
     });
     oBox.addEventListener('touchmove',function(){
         console.log('移动');
@@ -38,10 +38,11 @@
     oBox.addEventListener('touchend',function(){
         console.log('抬起');
 
+
     });
 
-    oBox.addEventListener('mouseup',function(){
-        console.log('鼠标抬起');
+    oBox.addEventListener('click',function(){
+        console.log('鼠标点击');
         t2 = new Date();
         alert(t2-t1);
     });
