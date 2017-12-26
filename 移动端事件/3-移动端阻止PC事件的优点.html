@@ -13,18 +13,32 @@
             background-color: red;
         }
 
+        .box {
+            height:100px;
+            width:1000px;
+            background-color: yellow;
+        }
+
+        body {
+            margin:0;
+            width:100%;
+            overflow: hidden;
+        }
+
     </style>
 </head>
 <body>
     <div>
        阻止PC事件
     </div>
+    <div class="box"></div>
 </body>
 <script>
      /*
      *  移动端阻止PC事件的优点:
      *       1. 解决"点透"问题
      *       2. IOS10以后通过meta标签禁止用户缩放不生效(阻止PC事件可以禁止用户缩放)
+     *       3. 解决body的overflow:hidden;在移动端不生效的问题
      * */
      document.addEventListener('touchstart',function(ev){
          ev.preventDefault();
