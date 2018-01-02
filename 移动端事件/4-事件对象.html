@@ -21,10 +21,14 @@
     /*
     *  事件对象： 事件绑定函数的第一个参数
     *     当用户在浏览器进行操作时，记录用户操作的一些细节信息
+    *     ev.touches: 位于当前屏幕的手指的列表
+    *     ev.targetTouches: 位于当前dom元素的手指的列表
+    *     ev.changedTouches: 涉及当前事件的手指的列表
     * */
     var oBox = document.getElementById("box");
-    oBox.addEventListener('touchstart',function(ev){
-
+    oBox.addEventListener('touchmove',function(ev){
+         console.log(ev)
+         this.innerHTML = ev.touches.length + "<br/>" + ev.targetTouches.length;
     });
 </script>
 </html>

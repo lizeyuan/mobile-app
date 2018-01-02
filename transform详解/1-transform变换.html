@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div {
+            width:100px;
+            height:100px;
+            background-color: red;
+        }
+
+        #box {
+            width:100px;
+            height:100px;
+            padding:100px;
+            border:solid 1px #ccc;
+        }
+        /*移动端hover不生效*/
+        /*#box:hover #div {*/
+             /*background-color: #1b6d85;*/
+        /*}*/
+    </style>
+    <script>
+         window.addEventListener('touchstart',function(ev){
+              ev.preventDefault();
+         });
+    </script>
+    <script>
+         window.onload = function(){
+             
+         }
+    </script>
+</head>
+<body>
+     <div id="box">
+         <div id="div">
+
+         </div>
+     </div>
+</body>
+</html>
