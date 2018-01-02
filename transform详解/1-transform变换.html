@@ -12,6 +12,8 @@
             height:100px;
             background-color: red;
             transition: 1s;
+            -webkit-transform-origin: left top;
+            transform-origin: left top;
         }
 
         #box {
@@ -36,9 +38,27 @@
          window.onload = function(){
              var div = document.getElementById('div');
              div.addEventListener('touchend',function(){
-                 this.style.transform = this.style.WebkitTransform = "skewX(20deg) skewY(20deg)"
+                 this.style.transform = this.style.WebkitTransform = "scale(2)"
              });
          }
+          /*  默认围绕元素的中心点进行变换的
+          *   rotate 旋转(deg)
+          *   skew   斜切(deg): 一个参数表示x轴斜切
+          *      skewX
+          *      skewY
+          *   scale  缩放   一个参数表示x轴,y轴同时缩放
+          *       scaleX
+          *       scaleY
+          *   translate 位移(px) 一个参数表示x轴位移
+          *       translateX
+          *       translateY
+          *
+          *   transform-origin 变换原点
+          *      关键字(left,center,right,top,bottom)
+          *      百分比
+          *      距离单位(px,em,rem)
+          *          默认 transform-origin:center center
+          * */
     </script>
 </head>
 <body>
