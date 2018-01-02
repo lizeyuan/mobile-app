@@ -11,6 +11,7 @@
             width:100px;
             height:100px;
             background-color: red;
+            transition: 1s;
         }
 
         #box {
@@ -18,20 +19,25 @@
             height:100px;
             padding:100px;
             border:solid 1px #ccc;
+
         }
         /*移动端hover不生效*/
         /*#box:hover #div {*/
              /*background-color: #1b6d85;*/
         /*}*/
+        /*移动端transform需要添加webkit前缀*/
     </style>
     <script>
-         window.addEventListener('touchstart',function(ev){
+         document.addEventListener('touchstart',function(ev){
               ev.preventDefault();
          });
     </script>
     <script>
          window.onload = function(){
-             
+             var div = document.getElementById('div');
+             div.addEventListener('touchend',function(){
+                 this.style.transform = this.style.WebkitTransform = "rotate(90deg)"
+             });
          }
     </script>
 </head>
