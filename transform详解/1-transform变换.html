@@ -7,18 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        #div {
+        .div {
             width:100px;
             height:100px;
             background-color: red;
             transition: 1s;
-            -webkit-transform-origin: left top;
-            transform-origin: left top;
+            /*-webkit-transform-origin: left top;*/
+            /*transform-origin: left top;*/
+            border:solid 1px #ccc;
         }
 
         #box {
             width:100px;
-            height:100px;
             padding:100px;
             border:solid 1px #ccc;
 
@@ -36,9 +36,12 @@
     </script>
     <script>
          window.onload = function(){
-             var div = document.getElementById('div');
-             div.addEventListener('touchend',function(){
-                 this.style.transform = this.style.WebkitTransform = "scale(2)"
+             var div = document.querySelectorAll('.div');
+             div[0].addEventListener('touchend',function(){
+                 this.style.transform = this.style.WebkitTransform = "scale(.5) translate(100px)"
+             });
+             div[1].addEventListener('touchend',function(){
+                 this.style.transform = this.style.WebkitTransform = "translate(100px) scale(.5)"
              });
          }
           /*  默认围绕元素的中心点进行变换的
@@ -58,14 +61,14 @@
           *      百分比
           *      距离单位(px,em,rem)
           *          默认 transform-origin:center center
+          *   transform右边的设置先执行
           * */
     </script>
 </head>
 <body>
      <div id="box">
-         <div id="div">
-
-         </div>
+         <div class="div"></div>
+         <div class="div"></div>
      </div>
 </body>
 </html>
