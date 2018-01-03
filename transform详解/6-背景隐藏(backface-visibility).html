@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div {
+            width:100px;
+            height:100px;
+            /*background-color: red;*/
+            transition: 4s;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+        #div span {
+            width:100px;
+            height:100px;
+            display: block;
+            position: absolute;
+            left:0;
+            top:0;
+            color:#fff;
+            font-size: 50px;
+            line-height: 100px;
+            text-align: center;
+            /*隐藏背面*/
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        #div span:nth-child(1){
+             background-color: blue;
+             width:50px;
+             height:50px;
+             left:25px;
+             top:25px;
+             font-size: 30px;
+             line-height: 50px;
+
+        }
+
+        #div span:nth-child(2){
+            background-color: green;
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+            /*背面定义：与父级元素相对的面为背面 */
+        }
+        #box {
+            padding:100px;
+            border:solid 1px #ccc;
+            width:100px;
+            height:100px;
+            margin:0 auto;
+            /*景深（元素距离观察者的距离,一般加在3d变换的元素的父元素上）*/
+            /*perspective: 200px;*/
+            /*-webkit-perspective: 200px;*/
+
+
+        }
+    </style>
+    <script>
+        window.onload = function(){
+
+            var div = document.querySelector("#div");
+            div.addEventListener('touchstart',function(){
+                this.style.transform = this.style.WebkitTransform = 'rotateY(360deg)';
+            });
+        };
+
+    </script>
+</head>
+<body>
+<div id="box">
+    <div id="div">
+        <span>正</span>
+        <span>反</span>
+
+    </div>
+</div>
+</body>
+</html>
