@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div {
+            width:100px;
+            height:100px;
+            background-color: red;
+            transition: 1s;
+
+        }
+
+        #box {
+            padding:100px;
+            border:solid 1px #ccc;
+            width:100px;
+            height:100px;
+            margin:0 auto;
+            /*景深（元素距离观察者的距离,一般加在3d变换的元素的父元素上）*/
+            perspective: 200px;
+            -webkit-perspective: 200px;
+
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var div = document.querySelector("#div");
+            div.addEventListener('touchstart',function(){
+                this.style.transform = this.style.WebkitTransform = 'translate3d(100px,100px,-100px)';
+            });
+        };
+        /*
+        *    旋转：
+        *       x轴； rotateX(degree)
+        *       y轴； rotateY(degree)
+        *       z轴； rotateZ(degree)
+        *       组合: rotate3d(x,y,z,degree)
+        *             实际旋转角度: x*degree
+        *                          y*degree
+        *                          z*degree
+        *    位移：
+        *        translateX/translateY/translateZ
+        *
+        *    transform-style:
+        *        元素在做3d变换的时候是否保留子元素的3d变换
+        *              flat(不保留)/preserve-3d(保留)
+        *              
+        * */
+    </script>
+</head>
+<body>
+<div id="box">
+    <div id="div"></div>
+</div>
+</body>
+</html>
