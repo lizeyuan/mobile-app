@@ -49,9 +49,16 @@
         *      斜切：
         *           degree为角度
         *           x轴斜切：
-        *                     c = Math.tan(degree/180*Math.PI)
+        *                     c = c + Math.tan(degree/180*Math.PI)
         *           y轴斜切：
-        *                     b = Math.tan(degree/180*Math.PI)
+        *                     b = b + Math.tan(degree/180*Math.PI)
+        *
+        *      旋转:
+        *           degree为角度
+        *             a = a + Math.cos(degree/180*Math.PI)
+        *             b = b + Math.sin(degree/180*Math.PI)
+        *             c = c - Math.sin(degree/180*Math.PI)
+        *             d = d + Math.cos(degree/180*Math.PI)
         * */
     </script>
 </head>
