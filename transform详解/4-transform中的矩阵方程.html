@@ -26,7 +26,7 @@
         window.onload = function(){
             var div = document.querySelector("#div");
             div.addEventListener('touchstart',function(){
-                 this.style.transform = this.style.WebkitTransform = 'matrix(0.5,0,0,0.5,50,50)';
+                 this.style.transform = this.style.WebkitTransform = 'skewX(30deg)';
             });
         };
         /*
@@ -46,6 +46,12 @@
         *                     b = b * x
         *                     d = d * x
         *                     f = f * x
+        *      斜切：
+        *           degree为角度
+        *           x轴斜切：
+        *                     c = Math.tan(degree/180*Math.PI)
+        *           y轴斜切：
+        *                     b = Math.tan(degree/180*Math.PI)
         * */
     </script>
 </head>
