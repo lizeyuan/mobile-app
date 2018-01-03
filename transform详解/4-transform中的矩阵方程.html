@@ -26,13 +26,15 @@
         window.onload = function(){
             var div = document.querySelector("#div");
             div.addEventListener('touchstart',function(){
-                 this.style.transform = this.style.WebkitTransform
-                     = 'rotate(45deg)';
+                 this.style.transform = this.style.WebkitTransform = 'matrix(1,0,0,1,100,100)';
             });
         };
         /*
         *   初始值 matrix(1,0,0,1,0,0)
         *   matrix(a,b,c,d,e,f)
+        *       位移：
+        *           x轴位移： e+x
+        *           y轴位移： f+x
         * */
     </script>
 </head>
