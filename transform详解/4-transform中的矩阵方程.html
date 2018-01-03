@@ -26,7 +26,7 @@
         window.onload = function(){
             var div = document.querySelector("#div");
             div.addEventListener('touchstart',function(){
-                 this.style.transform = this.style.WebkitTransform = 'matrix(1,0,0,1,100,100)';
+                 this.style.transform = this.style.WebkitTransform = 'matrix(0.5,0,0,0.5,50,50)';
             });
         };
         /*
@@ -35,6 +35,17 @@
         *       位移：
         *           x轴位移： e+x
         *           y轴位移： f+x
+        *       缩放：
+        *           x轴缩放：
+        *                x为缩放的倍数
+        *                     a = a * x
+        *                     c = c * x
+        *                     e = e * x
+        *           y轴缩放：
+        *                x为缩放的倍数
+        *                     b = b * x
+        *                     d = d * x
+        *                     f = f * x
         * */
     </script>
 </head>
