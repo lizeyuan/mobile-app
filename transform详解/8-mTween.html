@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width:100px;
+            height:100px;
+            padding:100px;
+            border:solid 1px #ccc;
+        }
+        #div {
+            width:100px;
+            height:100px;
+            background-color: red;
+        }
+    </style>
+    <script src="m.Tween.js"></script>
+    <script>
+        document.addEventListener('touchstart',function(ev){
+            ev.preventDefault();
+        });
+
+        /*
+        *    使用方法 MTween(init)
+        *     init: {
+        *          el:obj,
+        *          target:{
+        *             attr:val
+        *          }
+        *          time:1000,
+        *          type:'linear'
+        *          callBack:fn,  回调函数,动画执行完后执行的函数
+        *          callIn:fn     同步执行函数，动画执行过程中同步执行的东西
+          *     }
+        * */
+        window.onload = function(){
+            var div = document.querySelector("#div");
+            div.addEventListener('touchstart',function(){
+                  MTween({
+                      el:this,
+                      target:{
+                          width:200,
+                          height:150
+                      },
+                      time:2000,
+                      type:'linear'
+                  })
+            })
+
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <div id="div">
+
+    </div>
+</div>
+</body>
+</html>
