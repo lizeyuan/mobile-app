@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width:100px;
+            height:100px;
+            padding:100px;
+            border:solid 1px #ccc;
+        }
+        #div {
+            width:100px;
+            height:100px;
+            background-color: red;
+        }
+    </style>
+    <script>
+        document.addEventListener('touchstart',function(ev){
+             ev.preventDefault();
+        });
+        function cssTransform(element,attr,val){
+             //运用了单例模式，考虑单一职责原则可以更好的封装
+             if(!element.transform){
+                 element.transform = {};
+             }
+             if(typeof val == 'undefined'){
+                 //获取
+                 if(!element.transform[attr]){
+                      switch(attr){
+                          case 'scale':
+                          case 'scaleX':
+                          case 'scaleY':
+                          case 'scaleZ':
+                              element.transform[attr] = attr + "(1)";
+                              break;
+                          default:
+                              element.transform[attr] = attr + "(0)";
+
+                      }
+                 }
+                 return element.transform[attr];
+             }else{
+                 //设置
+                 var transformVal = '';
+                 element.transform[attr] = val;
+                 console.log(element.transform)
+                 for(var s in element.transform){
+                     switch(s){
+                         case 'scale':
+                         case 'scaleX':
+                         case 'scaleY':
+                         case 'scaleZ':
+                             transformVal += s + '(' + val + ')' + ' ';
+                             break;
+                         case 'translate':
+                         case 'translateX':
+                         case 'translateY':
+                         case 'translateZ':
+                             transformVal += s + '(' + val + 'px)' + ' ';
+                             break;
+                         default:
+                             transformVal += s + '(' + val + 'deg)' + ' ';
+                     }
+                 }
+
+                 element.style.transform = element.style.WebkitTransform = transformVal;
+
+
+
+             }
+        }
+
+        window.onload = function(){
+            var div = document.querySelector("#div");
+            cssTransform(div,'scale',2);
+            console.log(cssTransform(div,'scale'));
+        }
+    </script>
+</head>
+<body>
+     <div id="box">
+         <div id="div">
+
+         </div>
+     </div>
+</body>
+</html>
