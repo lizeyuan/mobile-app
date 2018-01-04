@@ -36,10 +36,10 @@
                           case 'scaleX':
                           case 'scaleY':
                           case 'scaleZ':
-                              element.transform[attr] = attr + "(1)";
+                              element.transform[attr] = 1;
                               break;
                           default:
-                              element.transform[attr] = attr + "(0)";
+                              element.transform[attr] = 0;
 
                       }
                  }
@@ -78,8 +78,12 @@
 
         window.onload = function(){
             var div = document.querySelector("#div");
-            cssTransform(div,'skew',45);
-            console.log(cssTransform(div,'scale'));
+            div.addEventListener('touchstart',function(){
+                var deg =  cssTransform(div,'rotate');;
+                deg +=30;
+                cssTransform(div,'rotate',deg);
+            })
+
         }
     </script>
 </head>
