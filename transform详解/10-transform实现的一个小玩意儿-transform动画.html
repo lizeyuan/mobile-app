@@ -8,7 +8,7 @@
     <title>Document</title>
     <style>
         img{
-            width:200px;
+            width:100px;
         }
         body {
             margin:0;
@@ -27,9 +27,10 @@
         #logo2,
         #logo3{
             position: absolute;
-            left:20%;
-            top:20%;
+            left:30%;
+            top:30%;
             transform-style: preserve-3d;
+            display: none;
 
         }
 
@@ -53,8 +54,64 @@
              var logo3 = document.querySelector('#logo3');
              css(logo2,'translateZ',-300);
              css(logo3,'translateZ',-300);
+             anim1();
+             function anim1(){
+                 logo2.style.display = 'none';
+                 logo3.style.display = 'block';
+                 MTween({
+                     el:logo3,
+                     type:"easeIn",
+                     target:{
+                         translateZ:0
+                     },
+                     time:2000,
+                     callBack:anim2
+                 })
+             }
+
+             function anim2(){
+                 MTween({
+                     el:logo3,
+                     type:"easeOut",
+                     target:{
+                         translateZ:-300
+                     },
+                     time:4000,
+                     callBack:anim3
+                 })
+             }
+
+             function anim3(){
+                  logo3.style.display = 'none';
+                  logo2.style.display = 'block';
+                     MTween({
+                         el:logo2,
+                         type:"easeIn",
+                         target:{
+                             translateZ:0
+                         },
+                         time:2000,
+                         callBack:anim4
+                     })
+             }
+
+             function anim4(){
+                 MTween({
+                     el:logo2,
+                     type:"easeIn",
+                     target:{
+                         translateZ:-300
+                     },
+                     time:2000,
+                     callBack:anim1
+                 })
+             }
+
+
 
          }
+
+
     </script>
 </head>
 <body>
