@@ -71,7 +71,7 @@
 
     var createInnerList = function(obj){
         var str = '';
-        for(var i=0;i < 100;i++){
+        for(var i=0;i < 35;i++){
             str += '<li>这是第'+ i +'个列表</li>';
         }
         obj.innerHTML = str;
@@ -101,6 +101,13 @@
             ';height:100px;position:absolute;right:0;top:0;opacity:0;transition:.5s opacity;'
         wrap.appendChild(scrollBar);
         list.addEventListener('touchstart',function(ev){
+             list.style.minHeight = '100%';
+             if(maxTranslate < 0){
+                 scrollBar.style.display = 'block';
+             }else{
+                 scrollBar.style.display = 'none';
+             }
+
              scale = wrap.offsetHeight / list.offsetHeight;
              maxTranslate = wrap.offsetHeight - list.offsetHeight;
              startPoint = ev.changedTouches[0].pageY;
