@@ -118,9 +118,9 @@
              MTween({
                  el:this,
                  target:{
-                     translateY:dis +  cssTransform(this,'translateY')
+                     translateY: Math.round(dis +  cssTransform(this,'translateY'))
                  },
-                 time:dis * 0.9,
+                 time:Math.abs(dis * 0.9),  /*时间跟移动的距离成正比，避免移动距离大，速度快的情况*/
                  type:'easeOutStrong'
 
              });
