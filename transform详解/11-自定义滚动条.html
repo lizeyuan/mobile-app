@@ -6,24 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script>
-        document.addEventListener('touchstart',function(ev){
-            ev.preventDefault();
-        });
-
-        var createInnerList = function(obj){
-            var str = '';
-            for(var i=0;i < 100;i++){
-                str += '<li>这是第'+ i +'个列表</li>';
-            }
-            obj.innerHTML = str;
-        }
-
-        window.onload = function(){
-            var list = document.querySelector('.list');
-            createInnerList(list);
-        }
-    </script>
     <style>
          body {
              margin:0;
@@ -81,4 +63,39 @@
     </section>
     <footer>这是底部</footer>
 </body>
+<script src="m.Tween-transform.js"></script>
+<script>
+    document.addEventListener('touchstart',function(ev){
+        ev.preventDefault();
+    });
+
+    var createInnerList = function(obj){
+        var str = '';
+        for(var i=0;i < 100;i++){
+            str += '<li>这是第'+ i +'个列表</li>';
+        }
+        obj.innerHTML = str;
+    }
+
+    window.onload = function(){
+        var list = document.querySelector('.list');
+        createInnerList(list);
+        /*
+        *   Z轴方向的位移开启3d硬件加速
+        * */
+        css(list,'translateZ',0.01)
+        var startPoint = 0;
+        var startDis = 0;
+        list.addEventListener('touchstart',function(ev){
+             startPoint = ev.changedTouches[0].pageY;
+        });
+        list.addEventListener('touchmove',function(ev){
+             var newPoint = ev.changedTouches[0].pageY;
+             var dis = newPoint - startPoint;
+             var newDis = dis + startDis;
+             css(this,'translateY',newDis);
+        });
+
+    }
+</script>
 </html>
