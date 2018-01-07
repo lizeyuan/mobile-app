@@ -77,14 +77,21 @@
         obj.innerHTML = str;
     }
 
-    window.onload = function(){
-        var list = document.querySelector('.list');
-        var wrap = document.querySelector('.wrap');
-        createInnerList(list);
+    mScroll({
+         el:document.querySelector('.wrap'),
+         offBar:true
+     })
+    function mScroll(init){
+         if(!init.el){
+             return;
+         }
+        var inner = init.el.children[0];
+        var wrap = init.el;
+        createInnerList(inner);
         /*
-        *   Z轴方向的位移开启3d硬件加速
-        * */
-        css(list,'translateZ',0.01)
+         *   Z轴方向的位移开启3d硬件加速
+         * */
+        css(inner,'translateZ',0.01)
         var startPoint = 0;
         var startDis = 0;
         var startY = 0;
@@ -93,79 +100,99 @@
         var startTime = 0;
         var lastTime = 0;
         var lastTimeDis = 0;
-        var maxTranslate = wrap.offsetHeight - list.offsetHeight;
-        var scale = wrap.offsetHeight / list.offsetHeight;
+        var maxTranslate = wrap.offsetHeight - inner.offsetHeight;
+        var scale = wrap.offsetHeight / inner.offsetHeight;
+        var scrollBar = null;
         /*添加滚动条*/
-        var scrollBar = document.createElement('div');
-        scrollBar.style.cssText = 'width:6px;background:rgba(0,0,0,0.5)' +
-            ';height:100px;position:absolute;right:0;top:0;opacity:0;transition:.5s opacity;'
-        wrap.appendChild(scrollBar);
-        list.addEventListener('touchstart',function(ev){
-             list.style.minHeight = '100%';
-             if(maxTranslate < 0){
-                 scrollBar.style.display = 'block';
-             }else{
-                 scrollBar.style.display = 'none';
-             }
+        if(!init.offBar){
+            scrollBar = document.createElement('div');
+            scrollBar.style.cssText = 'width:6px;background:rgba(0,0,0,0.5)' +
+                ';height:100px;position:absolute;right:0;top:0;opacity:0;transition:.5s opacity;'
+            wrap.appendChild(scrollBar);
+        }
 
-             scale = wrap.offsetHeight / list.offsetHeight;
-             maxTranslate = wrap.offsetHeight - list.offsetHeight;
-             startPoint = ev.changedTouches[0].pageY;
-             startY = startPoint;
-             startTime = new Date().getTime();
-             scrollBar.style.opacity  = '0.5';
-        });
-        list.addEventListener('touchmove',function(ev){
-             clearInterval(this.timer);
-             var newPoint = ev.changedTouches[0].pageY;
-             var dis = newPoint - startPoint;
-             startPoint = newPoint;
-             startDis += dis;
-             css(this,'translateY',startDis);
-             //滚动条移动的距离与页面移动的距离成比例
-             css(scrollBar,'translateY',-startDis * scale)
-             lastY = newPoint;
-             lastTime = new Date().getTime();
-             lastTimeDis = lastTime - startTime;
-             lastDis = lastY - startY;
-             startY = lastY;
-             startTime = lastTime;
+        inner.addEventListener('touchstart',function(ev){
+            inner.style.minHeight = '100%';
+            if(!init.offBar){
+                if(maxTranslate < 0){
+                    scrollBar.style.display = 'block';
+                }else{
+                    scrollBar.style.display = 'none';
+                }
+                scrollBar.style.opacity  = '0.5';
+            }
+
+            scale = wrap.offsetHeight / inner.offsetHeight;
+            maxTranslate = wrap.offsetHeight - inner.offsetHeight;
+            startPoint = ev.changedTouches[0].pageY;
+            startY = startPoint;
+            startTime = new Date().getTime();
 
         });
-        list.addEventListener('touchend',function(){
-             /*移动端滚动条添加缓冲*/
-             var speed = Math.round((lastDis / lastTimeDis) * 10);
-             var type = 'easeOut'
-             if(lastTimeDis <= 0){
-                 speed = 0;
-                 type = 'backOut'
-             }
-             var dis = speed * 5;
-             var target = Math.round(dis +  cssTransform(this,'translateY'));
+        inner.addEventListener('touchmove',function(ev){
+            clearInterval(this.timer);
+            var newPoint = ev.changedTouches[0].pageY;
+            var dis = newPoint - startPoint;
+            startPoint = newPoint;
+            startDis += dis;
+            css(this,'translateY',startDis);
+            //滚动条移动的距离与页面移动的距离成比例
+            if(!init.offBar){
+                css(scrollBar,'translateY',-startDis * scale)
+            }
+            lastY = newPoint;
+            lastTime = new Date().getTime();
+            lastTimeDis = lastTime - startTime;
+            lastDis = lastY - startY;
+            startY = lastY;
+            startTime = lastTime;
 
-             if(target > 0){
-                 target = 0;
-             }else if(target < maxTranslate){
-                 target = maxTranslate;
-             }
-
-             MTween({
-                 el:this,
-                 target:{
-                     translateY: target
-                 },
-                 time:Math.abs(target - cssTransform(this,'translateY')) * 1.5,  /*时间跟移动的距离成正比，避免移动距离大，速度快的情况*/
-                 type:type,
-                 callBack:function(){
-                     scrollBar.style.opacity = 0;
-                 },
-                 callIn:function(){
-                     var translateY = css(this,'translateY');
-                     css(scrollBar,'translateY',-translateY * scale);
-                 }
-
-             });
         });
+        inner.addEventListener('touchend',function(){
+            /*移动端滚动条添加缓冲*/
+            var speed = Math.round((lastDis / lastTimeDis) * 10);
+            var type = 'easeOut'
+            if(lastTimeDis <= 0){
+                speed = 0;
+                type = 'backOut'
+            }
+            var dis = speed * 5;
+            var target = Math.round(dis +  cssTransform(this,'translateY'));
+
+            if(target > 0){
+                target = 0;
+            }else if(target < maxTranslate){
+                target = maxTranslate;
+            }
+
+            MTween({
+                el:this,
+                target:{
+                    translateY: target
+                },
+                time:Math.abs(target - cssTransform(this,'translateY')) * 1.5,  /*时间跟移动的距离成正比，避免移动距离大，速度快的情况*/
+                type:type,
+                callBack:function(){
+                    if(!init.offBar){
+                        scrollBar.style.opacity = 0;
+
+                    }
+                },
+                callIn:function(){
+                    if(!init.offBar){
+                        var translateY = css(this,'translateY');
+                        css(scrollBar,'translateY',-translateY * scale);
+                    }
+
+                }
+
+            });
+        });
+
+
+    }
+
+    window.onload = function(){
 
     }
 </script>
