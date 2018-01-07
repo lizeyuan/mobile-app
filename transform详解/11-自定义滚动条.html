@@ -86,14 +86,44 @@
         css(list,'translateZ',0.01)
         var startPoint = 0;
         var startDis = 0;
+        var startY = 0;
+        var lastDis = 0;
+        var lastY = 0;
+        var startTime = 0;
+        var lastTime = 0;
+        var lastTimeDis = 0;
         list.addEventListener('touchstart',function(ev){
              startPoint = ev.changedTouches[0].pageY;
+             startY = startPoint;
+             startTime = new Date().getTime();
         });
         list.addEventListener('touchmove',function(ev){
              var newPoint = ev.changedTouches[0].pageY;
              var dis = newPoint - startPoint;
-             var newDis = dis + startDis;
-             css(this,'translateY',newDis);
+             startPoint = newPoint;
+             startDis += dis;
+             css(this,'translateY',startDis);
+             lastY = newPoint;
+             lastTime = new Date().getTime();
+             lastTimeDis = lastTime - startTime;
+             lastDis = lastY - startY;
+             startY = lastY;
+             startTime = lastTime;
+
+        });
+        list.addEventListener('touchend',function(){
+             /*移动端滚动条添加缓冲*/
+             var speed = Math.round((lastDis / lastTimeDis) * 10);
+             var dis = speed * 20;
+             MTween({
+                 el:this,
+                 target:{
+                     translateY:dis +  cssTransform(this,'translateY')
+                 },
+                 time:dis * 0.9,
+                 type:'easeOutStrong'
+
+             });
         });
 
     }
