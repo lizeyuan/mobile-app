@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        document.addEventListener('touchstart',function(ev){
+            ev.preventDefault();
+        });
+
+        var createInnerList = function(obj){
+            var str = '';
+            for(var i=0;i < 100;i++){
+                str += '<li>这是第'+ i +'个列表</li>';
+            }
+            obj.innerHTML = str;
+        }
+
+        window.onload = function(){
+            var list = document.querySelector('.list');
+            createInnerList(list);
+        }
+    </script>
+    <style>
+         body {
+             margin:0;
+         }
+         html,body {
+             height:100%;
+             position: relative;
+         }
+         ul {
+             padding:0;
+             margin:0;
+         }
+         li {
+             list-style: none;
+             height:30px;
+             line-height: 30px;
+             padding:5px;
+             border-bottom: 1px #000 solid;
+         }
+         header {
+             height: 40px;
+             line-height: 40px;
+             text-align: center;
+             background-color: black;
+             color: #fff;
+         }
+         section {
+             position: absolute;
+             top:40px;
+             bottom: 40px;
+             left:0;
+             right:0;
+         }
+         footer {
+             height:40px;
+             line-height:40px;
+             position: absolute;
+             bottom: 0;
+             background-color: #000;
+             color:#fff;
+             left:0;
+             right:0;
+             text-align:center;
+         }
+         .wrap {
+             overflow: hidden;
+         }
+
+    </style>
+</head>
+<body>
+    <header>这是头部</header>
+    <section class="wrap">
+        <ul class="list"></ul>
+    </section>
+    <footer>这是底部</footer>
+</body>
+</html>
