@@ -94,10 +94,19 @@
         var lastTime = 0;
         var lastTimeDis = 0;
         var maxTranslate = wrap.offsetHeight - list.offsetHeight;
+        var scale = wrap.offsetHeight / list.offsetHeight;
+        /*添加滚动条*/
+        var scrollBar = document.createElement('div');
+        scrollBar.style.cssText = 'width:6px;background:rgba(0,0,0,0.5)' +
+            ';height:100px;position:absolute;right:0;top:0;opacity:0;transition:.5s opacity;'
+        wrap.appendChild(scrollBar);
         list.addEventListener('touchstart',function(ev){
+             scale = wrap.offsetHeight / list.offsetHeight;
+             maxTranslate = wrap.offsetHeight - list.offsetHeight;
              startPoint = ev.changedTouches[0].pageY;
              startY = startPoint;
              startTime = new Date().getTime();
+             scrollBar.style.opacity  = '0.5';
         });
         list.addEventListener('touchmove',function(ev){
              clearInterval(this.timer);
@@ -106,6 +115,8 @@
              startPoint = newPoint;
              startDis += dis;
              css(this,'translateY',startDis);
+             //滚动条移动的距离与页面移动的距离成比例
+             css(scrollBar,'translateY',-startDis * scale)
              lastY = newPoint;
              lastTime = new Date().getTime();
              lastTimeDis = lastTime - startTime;
@@ -123,8 +134,6 @@
                  type = 'backOut'
              }
              var dis = speed * 5;
-
-             console.log(dis)
              var target = Math.round(dis +  cssTransform(this,'translateY'));
 
              if(target > 0){
@@ -139,7 +148,14 @@
                      translateY: target
                  },
                  time:Math.abs(target - cssTransform(this,'translateY')) * 1.5,  /*时间跟移动的距离成正比，避免移动距离大，速度快的情况*/
-                 type:type
+                 type:type,
+                 callBack:function(){
+                     scrollBar.style.opacity = 0;
+                 },
+                 callIn:function(){
+                     var translateY = css(this,'translateY');
+                     css(scrollBar,'translateY',-translateY * scale);
+                 }
 
              });
         });
