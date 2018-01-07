@@ -79,6 +79,7 @@
 
     window.onload = function(){
         var list = document.querySelector('.list');
+        var wrap = document.querySelector('.wrap');
         createInnerList(list);
         /*
         *   Z轴方向的位移开启3d硬件加速
@@ -92,12 +93,14 @@
         var startTime = 0;
         var lastTime = 0;
         var lastTimeDis = 0;
+        var maxTranslate = wrap.offsetHeight - list.offsetHeight;
         list.addEventListener('touchstart',function(ev){
              startPoint = ev.changedTouches[0].pageY;
              startY = startPoint;
              startTime = new Date().getTime();
         });
         list.addEventListener('touchmove',function(ev){
+             clearInterval(this.timer);
              var newPoint = ev.changedTouches[0].pageY;
              var dis = newPoint - startPoint;
              startPoint = newPoint;
@@ -114,14 +117,29 @@
         list.addEventListener('touchend',function(){
              /*移动端滚动条添加缓冲*/
              var speed = Math.round((lastDis / lastTimeDis) * 10);
-             var dis = speed * 20;
+             var type = 'easeOut'
+             if(lastTimeDis <= 0){
+                 speed = 0;
+                 type = 'backOut'
+             }
+             var dis = speed * 5;
+
+             console.log(dis)
+             var target = Math.round(dis +  cssTransform(this,'translateY'));
+
+             if(target > 0){
+                 target = 0;
+             }else if(target < maxTranslate){
+                 target = maxTranslate;
+             }
+
              MTween({
                  el:this,
                  target:{
-                     translateY: Math.round(dis +  cssTransform(this,'translateY'))
+                     translateY: target
                  },
-                 time:Math.abs(dis * 0.9),  /*时间跟移动的距离成正比，避免移动距离大，速度快的情况*/
-                 type:'easeOutStrong'
+                 time:Math.abs(target - cssTransform(this,'translateY')) * 1.5,  /*时间跟移动的距离成正比，避免移动距离大，速度快的情况*/
+                 type:type
 
              });
         });
