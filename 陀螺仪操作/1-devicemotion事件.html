@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width:200px;
+            height:200px;
+            background-color: red;
+            color:#fff;
+            margin:0 auto;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var box = document.querySelector('#box');
+            /*
+            *   devicemotion事件：
+            *       监测设备移动，获取相关轴的加速度，一般取整
+            * */
+            window.addEventListener('devicemotion',function(ev){
+                var motion =  ev.accelerationIncludingGravity;
+                var x = Math.round(motion.x);
+                var y = Math.round(motion.y);
+                var z = Math.round(motion.z);
+                box.innerHTML = "x:" + x;
+                box.innerHTML += '<br/>y:' + y;
+                box.innerHTML += '<br/>z:' + z;
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
