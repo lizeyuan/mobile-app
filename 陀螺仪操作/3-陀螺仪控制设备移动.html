@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width:50px;
+            height:50px;
+            background-color: red;
+            position:absolute;
+            left:50%;
+            top:30%;
+        }
+    </style>
+</head>
+<body>
+     <div id="box"></div>
+</body>
+<script src="m.Tween-transform.js"></script>
+<script>
+     var box = document.querySelector('#box');
+     window.addEventListener('devicemotion',function(ev){
+          var motion = ev.accelerationIncludingGravity;
+          var x = Math.round(motion.x);
+          if(isAndroid()){
+              x = -x;
+          }
+          var tx = css(box,'translateX');
+          css(box,'translateX', tx + x);
+     });
+
+     function isAndroid(){
+         var u = navigator.userAgent;
+         return u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+     }
+</script>
+</html>
