@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="m.Tween-transform.js"></script>
+    <style>
+        body {
+            margin:0;
+        }
+        body,html {
+            height:100%;
+            position: relative;
+        }
+        #box {
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        #div {
+            width:100px;
+            height:200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+     <div id="box">
+         请保持竖屏观看哦
+         <div id="div">
+
+         </div>
+     </div>
+</body>
+<script>
+    var box = document.querySelector('#box');
+    var setStyle = function(){
+        var w = window.screen.width;
+        var h = window.screen.height;
+        box.style.width = w + 'px'
+        box.style.height = h + 'px'
+    }
+
+    setStyle();
+    window.addEventListener('orientationchange',function(){
+          setChange();
+    });
+
+      function setChange(){
+          if(window.orientation == 90 || window.orientation == -90){
+              css(box,'rotate',90);
+          }else {
+              css(box,'rotate',0);
+          }
+      }
+</script>
+</html>
