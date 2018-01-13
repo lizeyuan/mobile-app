@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width:50px;
+            height:50px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script>
+     /*
+     *   摇一摇： 记录上一次的重力加速度和当前此次的重力加速度的差值大于一定值的时候
+     *           就认定用户进行了摇一摇的操作
+     * */
+     var isAndroid = function(){
+        var u = navigator.userAgent;
+        return  u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+     }
+     var box = document.querySelector('#box');
+     var lastX,lastY,lastZ;
+     var isShake = false;
+     window.addEventListener('devicemotion',function(ev){
+         var motion = ev.accelerationIncludingGravity;
+         var x = Math.round(motion.x);
+         var y = Math.round(motion.y);
+         var z = Math.round(motion.z);
+         if(isAndroid()){
+             x = -x;
+             y = -y;
+             z = -z;
+         }
+         if(typeof lastX == 'undefined'){
+             lastX = x;
+             lastY = y;
+             lastZ = z;
+             return;
+         }
+         var sum = Math.abs(x-lastX) + Math.abs(y-lastY) + Math.abs(z-lastZ);
+         box.innerHTML = sum;
+         if(sum > 18){
+             isShake = true;
+         }
+
+         if(sum > 8 && isShake){
+             alert('摇一摇')
+             isShake = false;
+         }
+         lastX = x;
+         lastY = y;
+         lastZ = z;
+
+     });
+
+</script>
+</html>
