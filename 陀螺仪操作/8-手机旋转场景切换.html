@@ -29,6 +29,9 @@
              height:768px;
              margin-left: -512px;
              margin-top: -384px;
+             -webkit-transform-style: preserve-3d;
+             transform-style: preserve-3d;
+             transition: .3s;
          }
          #box div {
              width:100%;
@@ -43,14 +46,14 @@
              background-image: url("img/img.jpg");
          }
          #box div:nth-of-type(2) {
-             background-image: url("img/img.jpg");
+             background-image: url("img/img2.jpg");
          }
          #box div:nth-of-type(3) {
-              background-image: url("img/img.jpg");
+              background-image: url("img/img3.jpg");
          }
 
          #box div:nth-of-type(4) {
-               background-image: url("img/img.jpg");
+               background-image: url("img/img4.jpg");
          }
 
 
@@ -67,4 +70,33 @@
           </div>
      </div>
 </body>
+<script src="m.Tween-transform.js"></script>
+<script>
+     var box = document.querySelector('#box');
+     var divs = box.querySelectorAll('div');
+     var start;
+     var last; //防抖动处理
+     for(var i = 0;i < divs.length;i++){
+         css(divs[i],'rotateY',i*90);
+         css(divs[i],'translateZ',-512)
+     }
+     css(box,'rotateY',0);
+
+     window.addEventListener('deviceorientation',function(ev){
+         var y = Math.round(ev.gamma);
+         /*第一次的加载图片的时候倾斜,第一次的y相当于0度*/
+         if(typeof start == 'undefined'){
+              start = y;
+              last = start;
+              return;
+         }
+         y = y - start;
+         /*解决抖动问题*/
+         if(Math.abs(y-last) > 5){
+             css(box,'rotateY',y);
+             last = y;
+         }
+
+     });
+</script>
 </html>
