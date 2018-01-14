@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width:200px;
+            height:200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+     <div id="box"></div>
+</body>
+<script>
+     /*
+     *  gesturestart: 当手指触摸元素，当前屏幕上有两个或者两个以上的手指，就会执行
+     * */
+     var box = document.querySelector('#box');
+     box.addEventListener('gesturestart',function(){
+          this.style.background = 'green';
+     });
+
+     /*当触发了gesturestart,并且手指的位置发生了改变*/
+     box.addEventListener('gesturechange',function(ev){
+          this.style.background = 'black';
+          //ev.scale: 缩放比，change时两根手指之间的距离和start时两根手指之间的距离
+          //的比例
+          //ev.rotation: 旋转差：change时两根手指之间的直线和start时，两根手指之间的直线的夹角
+     });
+     /*
+     *  gestureend: 当元素上没有手指或者屏幕上的手指少于两个的时候，就会执行
+     * */
+     box.addEventListener('gestureend',function(){
+          this.style.background = 'blue';
+     });
+
+</script>
+</html>

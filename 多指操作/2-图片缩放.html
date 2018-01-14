@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width:200px;
+            height:200px;
+            background-image: url("img.jpg");
+            background-size: cover;
+            margin:60px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script src="m.Tween-transform.js"></script>
+<script>
+     var box = document.querySelector('#box');
+     var startScale;
+     box.addEventListener('gesturestart',function(ev){
+         startScale = css(this,'scale');
+     });
+     box.addEventListener('gesturechange',function(ev){
+           this.innerHTML = ev.scale;
+           css(this,'scale',ev.scale * startScale);
+     });
+</script>
+</html>
