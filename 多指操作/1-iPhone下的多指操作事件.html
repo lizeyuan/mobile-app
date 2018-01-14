@@ -34,7 +34,7 @@
           //ev.rotation: 旋转差：change时两根手指之间的直线和start时，两根手指之间的直线的夹角
      });
      /*
-     *  gestureend: 当元素上没有手指或者屏幕上的手指少于两个的时候，就会执行
+     *  gestureend: 当触发了gesturestart,元素上没有手指或者屏幕上的手指少于两个的时候，就会执行
      * */
      box.addEventListener('gestureend',function(){
           this.style.background = 'blue';

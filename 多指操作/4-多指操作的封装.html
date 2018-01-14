@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width:100px;
+            height:100px;
+            background: red;
+            margin:30px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+</body>
+<script>
+    /*
+    *   init {
+    *       el: 元素
+    *       start:fn //gesturestart
+    *       end:fn // gestureend
+    *       change:fn // gesturechange
+    *   }
+    * */
+    var setGesture = function(init){
+        var el = init.el;
+        var isGesture = false;
+        if(!el){
+            return;
+        }
+        el.addEventListener('touchstart',function(ev){
+            isGesture = true
+            if(ev.touches.length >= 2){
+                init.start && init.start.call(el,ev)
+            }
+        });
+
+        el.addEventListener('touchend',function(ev){
+            if(isGesture){
+                if(ev.touches.length < 2 || ev.targetTouches < 1){
+                      init.end.call(el,ev);
+                }
+            }
+        });
+
+    }
+
+    var box = document.querySelector('#box');
+    setGesture({
+        el:box,
+        start:function(){
+            this.style.background = 'green';
+        },
+        end:function(){
+            this.style.background = 'black';
+        }
+    })
+</script>
+</html>
