@@ -23,12 +23,15 @@
 <script>
      var box = document.querySelector('#box');
      var startScale;
+     var startRotation;
      box.addEventListener('gesturestart',function(ev){
          startScale = css(this,'scale');
+         startRotation = css(this,'rotate');
      });
      box.addEventListener('gesturechange',function(ev){
            this.innerHTML = ev.scale;
            css(this,'scale',ev.scale * startScale);
+           css(this,'rotate',ev.rotation + startRotation);
      });
 </script>
 </html>
