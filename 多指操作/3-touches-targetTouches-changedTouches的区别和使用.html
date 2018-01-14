@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width:100px;
+            height:100px;
+            background: red;
+            margin:30px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script>
+     var box = document.querySelector('#box');
+     box.addEventListener('touchmove',function(ev){
+         //屏幕上的手指数目
+         //this.innerHTML = ev.touches.length;
+         //目标元素上的手指数目
+         //this.innerHTML = ev.targetTouches.length;
+         //触发事件的手指数目
+         this.innerHTML = ev.changedTouches.length;
+     });
+</script>
+</html>
