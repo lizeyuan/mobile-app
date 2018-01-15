@@ -10,8 +10,9 @@
         #box {
             width:100px;
             height:100px;
-            background: red;
             margin:30px auto;
+            background-image: url("img.jpg");
+            background-size: cover;
         }
     </style>
 </head>
@@ -20,6 +21,7 @@
 
     </div>
 </body>
+<script src="m.Tween-transform.js"></script>
 <script>
     /*
     *   init {
@@ -38,7 +40,7 @@
     var getDeg = function(point1,point2){
           var x = point1.x - point2.x;
           var y = point1.y - point2.y;
-          return Math.atan2(y,x);
+          return (Math.atan2(y,x)/Math.PI)*180;
     }
 
     var setGesture = function(init){
@@ -65,7 +67,7 @@
                   var startDis = getDis(startPoint[0],startPoint[1]);
                   var startDeg = getDeg(startPoint[0],startPoint[1]);
                   var newDis = getDis(nowPoint[0],nowPoint[1]);
-                  var newDeg = getDis(nowPoint[0],nowPoint[1]);
+                  var newDeg = getDeg(nowPoint[0],nowPoint[1]);
                   ev.scale = newDis / startDis;
                   ev.rotation = newDeg - startDeg;
                   init.change && init.change.call(el,ev);
@@ -83,17 +85,19 @@
     }
 
     var box = document.querySelector('#box');
+    css(box,'translateZ',0.01);
+    var startScale,startRotation;
     setGesture({
         el:box,
-        start:function(){
-            this.style.background = 'green';
+        start:function(ev){
+            startScale = css(this,'scale');
+            startRotation = css(this,'rotate');
         },
         change:function(ev){
-            this.innerHTML = ev.scale;
-            this.innerHTML += '<br/>' + ev.rotation;
-        },
-        end:function(){
-            this.style.background = 'blue';
+            this.innerHTML = startRotation
+
+            css(this,'scale',startScale * ev.scale)
+            css(this,'rotate',startRotation + ev.rotation);
         }
     })
 </script>
